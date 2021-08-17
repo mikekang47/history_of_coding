@@ -2000,7 +2000,7 @@ input, select, textarea {
 			position: relative;
 		}
 
-			.features section:nth-child(-n + 2) {
+			.features section:nth-child(-n + 1) {
 				border-top-width: 0;
 			}
 
