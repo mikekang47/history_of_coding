@@ -105,10 +105,9 @@
 					<section id="three" class="wrapper style1 fade-up">
 						<div class="inner">
 							<h2>Get in touch</h2>
-							<p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus, lacus eget hendrerit bibendum, urna est aliquam sem, sit amet imperdiet est velit quis lorem.</p>
 							<div class="split style1">
 								<section>
-									<form method="post" action="#">
+									<!-- <form method="post" action="#">
 										<div class="fields">
 											<div class="field half">
 												<label for="name">Name</label>
@@ -126,8 +125,47 @@
 										<ul class="actions">
 											<li><a href="" class="button submit">Send Message</a></li>
 										</ul>
-									</form>
+									</form> -->
+									<head>
+										<title>Contact Form</title>
+										<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+										<script type="text/javascript">
+											(function() {
+												emailjs.init('user_Ju3g7lAxhV8M30MvdXKay');
+											})();
+										</script>
+										<script type="text/javascript">
+											window.onload = function() {
+												document.getElementById('contact-form').addEventListener('submit', function(event) {
+													event.preventDefault();
+													
+													this.contact_number.value = Math.random() * 100000 | 0;
+													
+													emailjs.sendForm('service_nzz47cf', 'template_88qn07t', this)
+														.then(function() {
+															console.log('SUCCESS!');
+															alert("성공적으로 메일을 발송했습니다.");
+														}, function(error) {
+															console.log('FAILED...', error);
+														});
+												});
+											}
+										</script>
+									</head>
+									<body>
+										<form id="contact-form">
+											<input type="hidden" name="contact_number">
+											<label>Name</label>
+											<input type="text" name="from_name" required>
+											<label>Email</label>
+											<input type="email" name="reply_to" required>
+											<label>Message</label>
+											<textarea name="message" required></textarea>
+											<input type="submit" value="Send">
+										</form>
+									</body>
 								</section>
+
 								<section>
 									<ul class="contact">
 										<li>
